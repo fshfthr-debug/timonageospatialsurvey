@@ -1,0 +1,14 @@
+# Caddy gets a free Let's Encrypt certificate for APP_DOMAIN and renews it
+# automatically. APP_DOMAIN must be a real DNS name that already points at this
+# machine (see DEPLOYMENT.md, section 5, for a free subdomain).
+{$APP_DOMAIN} {
+	encode zstd gzip
+
+	# Caddy sits in front of the app image; the API also serves the React build.
+	reverse_proxy api:3001
+
+	log {
+		output stderr
+		format console
+	}
+}

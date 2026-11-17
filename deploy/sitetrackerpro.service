@@ -1,0 +1,31 @@
+# systemd unit for the non-Docker install (DEPLOYMENT.md, section 4).
+#
+#   sudo cp deploy/sitetrackerpro.service /etc/systemd/system/
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now sitetrackerpro
+#   journalctl -u sitetrackerpro -f      # logs
+
+[Unit]
+Description=SiteTrackerPro (Node/Express API + built frontend)
+After=network.target postgresql.service
+Wants=postgresql.service
+
+[Service]
+Type=simple
+User=sitetracker
+Group=sitetracker
+WorkingDirectory=/opt/sitetrackerpro/backend
+EnvironmentFile=/etc/sitetrackerpro.env
+ExecStart=/usr/bin/node backend-v3-enhanced.js
+Restart=always
+RestartSec=5
+
+# Keep the service boxed in: it may write only to its uploads folder.
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+ReadWritePaths=/opt/sitetrackerpro/backend/uploads
+
+[Install]
+WantedBy=multi-user.target

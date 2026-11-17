@@ -1,0 +1,13 @@
+Component,Material Type,Quantity,Unit,Phase
+Ground floor slab,Concrete,24.50,m3,Substructure
+Foundation rebar,Steel,1250.50,kg,Substructure
+Column C1 (300x300),Concrete,1.80,m3,Superstructure
+Column C2 (300x300),Concrete,1.80,m3,Superstructure
+External wall,CMU Blocks,410,units,Superstructure
+Internal partition,Burnt Clay Bricks,860,units,Superstructure
+Ceiling plaster,Plaster Cement,240,kg,Finishes
+Floor tiles,Ceramic Tiles,180,m2,Finishes
+Distribution board,Electrical,1,units,MEP
+Water supply pipe,Copper Pipe,120,meter,MEP
+Roof sheeting,Corrugated GI Sheets,320,m2,Roofing
+Fire extinguisher,Fire Extinguisher,2,units,Safety

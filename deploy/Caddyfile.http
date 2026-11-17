@@ -1,0 +1,9 @@
+# No domain yet? Use this file while you test.
+#   cp deploy/Caddyfile.http deploy/Caddyfile
+# It serves plain HTTP on port 80 — fine on a laptop or a private network, but
+# logins travel unencrypted, so do not put real data in it over the internet.
+# Once you have a hostname, restore the HTTPS version: cp deploy/Caddyfile.https.example deploy/Caddyfile
+:80 {
+	encode zstd gzip
+	reverse_proxy api:3001
+}
